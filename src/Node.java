@@ -12,8 +12,8 @@ public class Node {
             state[i] = s[i];
         }
 
-        int diag = 0;
-        int horiz = 0;
+        int[] diag = new int[s.length];
+        int[] horiz = new int[s.length];
 
         // check for # of pairs of attacking queens
         // only checks in one direction, so no pairs are repeated
@@ -21,21 +21,22 @@ public class Node {
         for(int i=0; i<state.length; i++) {
             for(int j=i+1; j<state.length; j++) {
                 // check horizontal alignment
-                if((state[i] == state[j])) {
-                    horiz++;
-                    //System.out.println(i + ": " + state[i] + " " + j + ": " + state[j]);
+                if((state[i] == state[j]) && horiz[i] < 1) {
+                    horiz[i]++;
                 }
                 // if difference between vertical position = difference between horizontal position
                 // diagonal alignment
-                if((Math.abs(j-i) == Math.abs(state[j] - state[i]))) {
-                    diag++;
+                if((Math.abs(j-i) == Math.abs(state[j] - state[i])) && diag[i] < 1) {
+                    diag[i]++;
                     //System.out.println(i + ": " + state[i] + " " + j + ": " + state[j]);
                 }
                 // each queen can only be aligned with one queen horizontally and one diagonally
                 //if(horiz == 1 && diag == 1) break;
             }
         }
-        h = diag+horiz;
+        for(int i=0;i<s.length; i++) {
+            h += (diag[i] + horiz[i]);
+        }
     }
 
     public int getH() {

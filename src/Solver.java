@@ -3,7 +3,7 @@ import java.util.Random;
 public class Solver {
     public static void main(String[] args) {
         System.out.println("22-Queen Solver");
-        int g = 100;
+        int g = 200;
         long sTime;
         long[] tTime = new long[g];
         boolean[] res = new boolean[g];
