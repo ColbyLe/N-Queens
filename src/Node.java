@@ -55,7 +55,7 @@ public class Node {
     // method to generate new nodes and select a successor based on steepest-ascent hill climbing
     public Node getNextSteepest() {
         // priority queue to sort all successor nodes by # of pairs of attacking queens
-        PriorityQueue<Node> next = new PriorityQueue<Node>();
+        PriorityQueue<Node> next = new PriorityQueue<Node>(new NodeComparator());
         // for each queen, record current position, then find range of valid next moves
         for(int i=0; i<state.length; i++) {
             int pos = state[i];
