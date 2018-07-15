@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1afc7b2b-a15d-445e-82a3-a6597cdeb314" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solver.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,8 +34,8 @@
       <file leaf-file-name="Solver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Solver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+            <state relative-caret-position="-238">
+              <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -82,8 +80,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="693" />
-    <option name="y" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1161" />
   </component>
@@ -198,7 +195,7 @@
       <updated>1531513865464</updated>
       <workItem from="1531513868835" duration="12230000" />
       <workItem from="1531547856889" duration="1616000" />
-      <workItem from="1531607669637" duration="1875000" />
+      <workItem from="1531607669637" duration="3141000" />
     </task>
     <task id="LOCAL-00001" summary="added driver class">
       <created>1531547101532</created>
@@ -214,11 +211,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531548870541</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed counting of aligned pairs of queens">
+      <created>1531613484823</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1531613484823</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15721000" />
+    <option name="totallyTimeSpent" value="16987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1170" extended-state="6" />
@@ -237,7 +241,7 @@
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.20677084" />
+      <window_info content_ui="combo" id="Project" order="5" weight="0.41440502" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -348,8 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Solver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        <state relative-caret-position="-238">
+          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
         </state>
       </provider>
     </entry>

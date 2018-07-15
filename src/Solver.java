@@ -4,17 +4,27 @@ public class Solver {
     public static void main(String[] args) {
         System.out.println("22-Queen Solver");
         int g = 200;
-        long sTime;
-        long[] tTime = new long[g];
-        boolean[] res = new boolean[g];
+        long cTime;
+        long[] sTime = new long[g];
+        long[] aTime = new long[g];
+        boolean[] resSteep = new boolean[g];
+        boolean[] resAnneal = new boolean[g];
+
         for(int i=0; i<g; i++) {
-            sTime = System.nanoTime();
+            cTime = System.nanoTime();
             System.out.println();
-            res[i] = steepest(randomize(22));
-            tTime[i] = timeElapsed(sTime);
+            resSteep[i] = steepest(randomize(22));
+            sTime[i] = timeElapsed(cTime);
         }
-        System.out.println("Success rate: " + successRate(res) + "%");
-        System.out.println("Average running time: " + avgTime(tTime) + " ns");
+
+        for(int i=0; i<g; i++) {
+            cTime = System.nanoTime();
+            System.out.println();
+            resAnneal[i] = steepest(randomize(22));
+            aTime[i] = timeElapsed(cTime);
+        }
+        System.out.println("Success rate: " + successRate(resSteep) + "%");
+        System.out.println("Average running time: " + avgTime(sTime) + " ns");
     }
 
     public static boolean steepest(Node start) {
@@ -41,8 +51,29 @@ public class Solver {
         return false;
     }
 
-    public static boolean anneal(Node Start) {
-
+    public static boolean anneal(Node start) {
+        Random rd = new Random();
+        Node s = start;
+        Node next;
+        int t = 0;
+        int dE;
+        do {
+            t++;
+            if(s.getH() == 0) {
+                Node.printState(s);
+                Node.printBoard(s);
+                System.out.println("Solved!");
+                return true;
+            }
+            next = s.getNextRandom();
+            dE = next.getH() - s.getH();
+            if(dE>0) s=next;
+            else {
+                int e = rd.nextInt(t);
+                if(e==0) s = next;
+                else break;
+            }
+        } while(s.getH() != 0);
         return false;
     }
 
