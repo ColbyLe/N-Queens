@@ -24,19 +24,25 @@ public class Solver {
         do {
             // System.out.println("Trial " + counter);
             // counter++;
-            lastH = s.getH();
-            System.out.print(lastH);
-            s = s.getNextSteepest();
-            System.out.println(", " + s.getH());
             if(s.getH() == 0) {
                 Node.printState(s);
                 Node.printBoard(s);
                 System.out.println("Solved!");
                 return true;
             }
+            lastH = s.getH();
+            System.out.print(lastH);
+
+            s = s.getNextSteepest();
+            System.out.println(", " + s.getH());
         } while(lastH>s.getH());
         Node.printState(s);
         Node.printBoard(s);
+        return false;
+    }
+
+    public static boolean anneal(Node Start) {
+
         return false;
     }
 

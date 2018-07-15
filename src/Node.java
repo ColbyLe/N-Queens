@@ -1,4 +1,6 @@
 import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Node {
     private int[] state;
@@ -53,7 +55,7 @@ public class Node {
     // method to generate new nodes and select a successor based on steepest-ascent hill climbing
     public Node getNextSteepest() {
         // priority queue to sort all successor nodes by # of pairs of attacking queens
-        PriorityQueue<Node> next = new PriorityQueue<Node>(500, new NodeComparator());
+        PriorityQueue<Node> next = new PriorityQueue<Node>();
         // for each queen, record current position, then find range of valid next moves
         for(int i=0; i<state.length; i++) {
             int pos = state[i];
@@ -71,6 +73,28 @@ public class Node {
         }
         // return best option from successor nodes
         return next.poll();
+    }
+
+    public Node getNextRandom() {
+        // priority queue to sort all successor nodes by # of pairs of attacking queens
+        ArrayList<Node> next = new ArrayList<>();
+        Random rd = new Random();
+        // for each queen, record current position, then find range of valid next moves
+        for(int i=0; i<state.length; i++) {
+            int pos = state[i];
+            int min = pos - 8;
+            int max = pos + 8;
+            if(min<0) min = 0;
+            if(max>state.length-1) max = state.length-1;
+            // for each valid next move, generate new node and add to priority queue
+            for(int j=min; j<=max; j++) {
+                if(j==pos) continue;
+                int[] sOut = copyState(state);
+                sOut[i] = j;
+                next.add(new Node(sOut));
+            }
+        }
+        return next.get(rd.nextInt(next.size()));
     }
 
     // utility function to make deep copy of state
