@@ -1,30 +1,44 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Solver {
     public static void main(String[] args) {
-        System.out.println("22-Queen Solver");
-        int g = 200;
+        Scanner kb = new Scanner(System.in);
+        System.out.println("n-Queen Solver\n");
+        int g = 10000;
         long cTime;
         long[] sTime = new long[g];
         long[] aTime = new long[g];
         boolean[] resSteep = new boolean[g];
         boolean[] resAnneal = new boolean[g];
 
+        System.out.print("Enter number of queens: ");
+        int n = kb.nextInt();
+
+        System.out.println("\nSteepest Ascent: \n");
         for(int i=0; i<g; i++) {
             cTime = System.nanoTime();
-            System.out.println();
-            resSteep[i] = steepest(randomize(22));
+            //System.out.println();
+            resSteep[i] = steepest(randomize(n));
             sTime[i] = timeElapsed(cTime);
         }
 
+        System.out.println("\nSimulated Annealing: \n");
         for(int i=0; i<g; i++) {
             cTime = System.nanoTime();
-            System.out.println();
-            resAnneal[i] = steepest(randomize(22));
+            //System.out.println();
+            resAnneal[i] = steepest(randomize(n));
             aTime[i] = timeElapsed(cTime);
         }
+
+        System.out.println("\n\nResults from " + g + " tests:");
+        System.out.println("\nSteepest Ascent: ");
         System.out.println("Success rate: " + successRate(resSteep) + "%");
         System.out.println("Average running time: " + avgTime(sTime) + " ns");
+
+        System.out.println("\nSimulated Annealing: ");
+        System.out.println("Success rate: " + successRate(resAnneal) + "%");
+        System.out.println("Average running time: " + avgTime(aTime) + " ns");
     }
 
     public static boolean steepest(Node start) {
@@ -37,17 +51,17 @@ public class Solver {
             if(s.getH() == 0) {
                 Node.printState(s);
                 Node.printBoard(s);
-                System.out.println("Solved!");
+                System.out.println("Solved!\n");
                 return true;
             }
             lastH = s.getH();
-            System.out.print(lastH);
+            //System.out.print(lastH);
 
             s = s.getNextSteepest();
-            System.out.println(", " + s.getH());
+            //System.out.println(", " + s.getH());
         } while(lastH>s.getH());
-        Node.printState(s);
-        Node.printBoard(s);
+        //Node.printState(s);
+        //Node.printBoard(s);
         return false;
     }
 
@@ -62,15 +76,15 @@ public class Solver {
             if(s.getH() == 0) {
                 Node.printState(s);
                 Node.printBoard(s);
-                System.out.println("Solved!");
+                System.out.println("Solved!\n");
                 return true;
             }
             next = s.getNextRandom();
-            dE = next.getH() - s.getH();
+            dE = s.getH() - next.getH();
             if(dE>0) s=next;
             else {
-                int e = rd.nextInt(t);
-                if(e==0) s = next;
+                int e = rd.nextInt(t/25);
+                if(e==1) s = next;
                 else break;
             }
         } while(s.getH() != 0);
@@ -94,8 +108,8 @@ public class Solver {
         return (System.nanoTime() - start);
     }
 
-    public static float successRate(boolean[] b) {
-        int counter = 0;
+    public static double successRate(boolean[] b) {
+        double counter = 0;
         for(boolean i : b) {
             if(i) counter++;
         }
